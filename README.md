@@ -1,4 +1,4 @@
-# 📊 Stock Sentiment Analysis Pipeline
+# 📊 Stock Sentiment Analysis
 
 An end-to-end cloud-native pipeline that collects stock-related data via a public API, performs sentiment analysis, and presents the insights in an interactive dashboard built using Streamlit. The entire system is deployed on AWS using serverless and containerized services for scalability and automation.
 
