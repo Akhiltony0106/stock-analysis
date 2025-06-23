@@ -1,65 +1,78 @@
-# 📈 Stock Sentiment Analysis Pipeline
+# 📊 Stock Sentiment Analysis Pipeline
 
-This project is an automated data pipeline that fetches stock-related news from an API, analyzes the sentiment, stores it in a database, and visualizes the results through a Streamlit dashboard hosted on AWS ECS Fargate.
+An end-to-end cloud-native pipeline that collects stock-related data via a public API, performs sentiment analysis, and presents the insights in an interactive dashboard built using Streamlit. The entire system is deployed on AWS using serverless and containerized services for scalability and automation.
 
 ---
 
 ## 🧠 Project Overview
 
-The pipeline performs the following tasks:
+This architecture is designed to automatically fetch stock-related data daily, analyze sentiment, store the results, and provide a live dashboard for monitoring and decision-making.
 
-- **Daily Scheduled Fetching** using Amazon EventBridge
-- **Serverless Processing** via AWS Lambda:
-  - Loads stock data from a third-party API(Apple)
-  - Analyzes the sentiment of news headlines
-  - Writes results to both Amazon RDS (PostgreSQL) and Amazon S3
-- **Data Storage:**
-  - Structured data with sentiment scores → stored in Amazon RDS
-  - Raw news data in JSON format → stored in Amazon S3
-- **Streamlit Dashboard:**
-  - Built locally
-  - Dockerized and pushed to Amazon ECR
-  - Deployed on ECS Fargate to run the dashboard
-  - Dashboard available on **port 8051**
+### 🔁 Pipeline Workflow:
+
+1. **Trigger (EventBridge):**
+   - Scheduled to run **daily**
+   - Invokes an AWS Lambda function
+
+2. **Processing (AWS Lambda):**
+   - Fetches data from a **Stock API**
+   - Performs **sentiment analysis**
+   - Stores:
+     - Processed sentiment data → **Amazon RDS (PostgreSQL)**
+     - Raw stock data in JSON format → **Amazon S3**
+
+3. **Data Storage:**
+   - **Amazon RDS:** Structured data with sentiment scores
+   - **Amazon S3:** Backup of raw stock API responses
+
+4. **Dashboard Deployment:**
+   - Dashboard developed locally using **Streamlit**
+   - Containerized with **Docker**
+   - Image pushed to **Amazon ECR**
+   - Deployed to **Amazon ECS Fargate**
+   - Accessed via browser on **port 8051**
 
 ---
 
-## 🗂️ Architecture Diagram
+## 🗺️ Architecture Diagram
 
-![Stock Sentiment Architecture](architecture.jpg)
+![Architecture Diagram](architecture.jpg)
 
 ---
+## 📷 Dashboard Preview
+
+![Dashboard Screenshot](dashboard_screenshot.png)
+
 
 ## 🚀 Technologies Used
 
-- **AWS Lambda** – Serverless data processing
-- **Amazon EventBridge** – Task scheduler
-- **Amazon RDS (PostgreSQL)** – Structured data storage
-- **Amazon S3** – Raw file storage
-- **Amazon ECS Fargate** – Serverless container hosting
-- **Amazon ECR** – Docker image registry
-- **Streamlit** – Interactive data dashboard
-- **Docker** – Containerization
-- **Python** – Programming language for Lambda and dashboard
+| Technology        | Purpose                              |
+|-------------------|---------------------------------------|
+| AWS Lambda        | Serverless stock processing logic     |
+| AWS EventBridge   | Daily trigger scheduler               |
+| Amazon RDS (PostgreSQL) | Structured data store            |
+| Amazon S3         | Raw JSON backup of stock data         |
+| Amazon ECS Fargate| Hosting the Streamlit dashboard       |
+| Amazon ECR        | Docker image registry                 |
+| Streamlit         | Web-based interactive dashboard       |
+| Docker            | Containerization of the dashboard     |
+| Python            | Primary language for Lambda + frontend|
 
 ---
 
-## 📊 Dashboard
+## 📊 Dashboard Highlights
 
-The final dashboard is a Streamlit application that provides a visual summary of:
-
-- Stock sentiment trends
-- Volume of news articles
-- Historical data comparisons
-
-Accessible via `http://<your-domain-or-ecs-ip>:8051`
+- Built using **Streamlit** and served from ECS Fargate
+- Displays processed sentiment and stock data
+- Supports real-time updates based on scheduled Lambda runs
+- Accessible at: `http://<your-ecs-ip>:8051`
 
 ---
 
-## 🛠️ Setup Instructions
+## 🛠️ Local Setup Instructions
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/stock-sentiment-pipeline.git
-   cd stock-sentiment-pipeline
-# stock-analysis
+### Clone the Repo
+```bash
+git clone https://github.com/your-username/stock-sentiment-pipeline.git
+cd stock-sentiment-pipeline
+
