@@ -41,7 +41,7 @@ This architecture is designed to automatically fetch stock-related data daily, a
 ---
 ## 📷 Dashboard Preview
 
-![Dashboard Screenshot](dashboard_screenshot.png)
+![Dashboard Screenshot](stock-market-dashboard.png)
 
 
 ## 🚀 Technologies Used
