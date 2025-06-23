@@ -10,7 +10,7 @@ The pipeline performs the following tasks:
 
 - **Daily Scheduled Fetching** using Amazon EventBridge
 - **Serverless Processing** via AWS Lambda:
-  - Loads stock data from a third-party API(APPLE)
+  - Loads stock data from a third-party API(Apple)
   - Analyzes the sentiment of news headlines
   - Writes results to both Amazon RDS (PostgreSQL) and Amazon S3
 - **Data Storage:**
