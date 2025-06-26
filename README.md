@@ -69,10 +69,4 @@ This architecture is designed to automatically fetch stock-related data daily, a
 
 ---
 
-## 🛠️ Local Setup Instructions
-
-### Clone the Repo
-```bash
-git clone https://github.com/your-username/stock-sentiment-pipeline.git
-cd stock-sentiment-pipeline
 
