@@ -6,9 +6,9 @@ import json
 from datetime import datetime
 
 # === CONFIGURATION ===
-API_KEY = "OAMQZ7Q06RHOBPX4"  # Replace with your API key
-SYMBOLS = ['AAPL']  # Stock symbols to query
-BUCKET = "akhilstockdata"  # Your S3 bucket
+API_KEY = "OAMQZ7Q06RHOBPX4"  
+SYMBOLS = ['AAPL']  
+BUCKET = "akhilstockdata"  
 
 # Initialize S3 client
 s3 = boto3.client('s3')
